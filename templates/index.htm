@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service de réservation de voyages</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Liste des réservations de voyages</h1>
+    <table>
+        <tr>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Durée</th>
+            <th>Hôtel</th>
+            <th>Location de voiture</th>
+            <th>Action</th>
+        </tr>
+        {% for trip in trips %}
+        <tr>
+            <td>{{ trip.destination }}</td>
+            <td>{{ trip.date }}</td>
+            <td>{{ trip.duration }} jours</td>
+            <td>{{ trip.hotel }}</td>
+            <td>{{ trip.car_rental }}</td>
+            <td>
+                <form action="/delete/{{ trip.id }}" method="post">
+                    <button type="submit" class="delete-btn">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/add" class="add-link">Ajouter une réservation</a>
+</body>
+</html>
+ntents here
